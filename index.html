@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DormFit • Isaiah Powell</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root {
+  --df-crimson:#dc3545; 
+  --df-bg:#0b0b0c; 
+  --df-border:#1e1e22; 
+  --df-panel:#121214;
+}
+
+body {
+  background: radial-gradient(800px 300px at 70% -10%, rgba(220,53,69,.15), transparent), var(--df-bg);
+}
+
+.panel {
+  background: var(--df-panel);
+  border: 1px solid var(--df-border);
+  border-radius: 1rem;
+}
+
+.btn-crimson {
+  --bs-btn-bg: var(--df-crimson);
+  --bs-btn-border-color: var(--df-crimson);
+  --bs-btn-hover-bg: #b02a37;
+  --bs-btn-hover-border-color: #b02a37;
+}
+
+.accent { color: var(--df-crimson); }
+
+.gradient-hero {
+  background: radial-gradient(1200px 400px at 80% -10%, rgba(220, 53, 69, 0.25), transparent),
+              radial-gradient(800px 300px at 10% -20%, rgba(13, 27, 45, 0.4), transparent),
+              linear-gradient(180deg, #0b0b0c 0%, #111216 50%, #1a1a1d 100%);
+  border-bottom: 1px solid rgba(220, 53, 69, 0.1);
+}
+
+.badge-pill {
+  border-radius: 999px;
+  padding: .35rem .7rem;
+  font-weight: 600;
+}
+
+.ring-gradient {
+  box-shadow: 0 0 0 .25rem rgba(220,53,69,.18), 0 0 40px -10px rgba(111,66,193,.55);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg,#ff6b6b,#c77dff,#4dabf7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-iris {
+  --bs-btn-bg: #6f42c1;
+  --bs-btn-border-color: #6f42c1;
+  --bs-btn-hover-bg: #5a32a2;
+  --bs-btn-hover-border-color: #5a32a2;
+}
+
+.btn-azure {
+  --bs-btn-bg: #0d6efd;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-bg: #0b5ed7;
+  --bs-btn-hover-border-color: #0b5ed7;
+}
+
+.auto-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #0e0e11;
+  border: 1px solid var(--df-border);
+}
+
+.auto-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: contrast(1.06) saturate(1.08);
+}
+
+@media (max-width: 768px) {
+  .auto-frame { aspect-ratio: 1/1; }
+}
+
+/* Purpose spotlight */
+/* PURPOSE SECTION — enhanced visual pop */
+/* PURPOSE SECTION — matches new darker DormFit look */
+.purpose-spotlight {
+  background: linear-gradient(160deg, #0d0d0f 0%, #151517 40%, #1c1d20 100%);
+  border: 1px solid rgba(220,53,69,0.15);
+  border-radius: 1rem;
+  position: relative;
+  color: #e3e3e3;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  box-shadow: 0 0 30px rgba(0,0,0,0.6), 0 0 20px rgba(139,26,39,0.15);
+  transition: all 0.3s ease;
+}
+
+.purpose-spotlight:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 50px rgba(139,26,39,0.2), 0 0 80px rgba(13,27,45,0.25);
+}
+
+/* Subtle gradient border glow */
+.purpose-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(139,26,39,0.6), rgba(13,27,45,0.5));
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Headline */
+.purpose-spotlight h2 {
+  background: linear-gradient(90deg, #a61d2d, #5c6370);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  text-shadow: 0 0 18px rgba(139,26,39,0.35);
+}
+
+/* Text */
+.purpose-spotlight p {
+  color: rgba(220,220,220,0.9);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 750px;
+}
+
+/* Buttons inside purpose section */
+.purpose-spotlight .btn-crimson {
+  background-color: #8b1a27;
+  border-color: #8b1a27;
+  box-shadow: 0 0 10px rgba(139,26,39,.25);
+}
+.purpose-spotlight .btn-crimson:hover {
+  background-color: #a61d2d;
+  border-color: #a61d2d;
+  box-shadow: 0 0 18px rgba(220,53,69,.35);
+}
+
+.purpose-spotlight .btn-outline-light {
+  border-color: rgba(255,255,255,0.3);
+  color: #e0e0e0;
+}
+.purpose-spotlight .btn-outline-light:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: #8b1a27;
+}
+
+
+/* Make headline glow subtly */
+.purpose-spotlight h2 {
+  text-shadow: 0 0 10px rgba(220,53,69,0.4), 0 0 25px rgba(111,66,193,0.3);
+}
+
+/* Make description slightly brighter */
+.purpose-spotlight p {
+  color: rgba(230,230,230,0.88);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* About Section Adjustments */
+#about {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#about h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+#about .about-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto 1rem auto;
+  color: #bbb;
+}
+
+#about .about-img {
+  transform: scale(0.75);
+  max-width: 220px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#about .about-img:hover {
+  transform: scale(0.78);
+  filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+  #about h2 { font-size: 1.3rem; }
+  #about .about-text { font-size: 0.85rem; line-height: 1.6; }
+  #about .about-img { transform: scale(0.85); max-width: 200px; }
+}
+
+#results .panel {
+  background: var(--df-panel);
+  border: 1px solid var(--df-border);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#results .panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(220,53,69,0.12);
+}
+
+#results h5 {
+  color: #fff;
+  font-weight: 600;
+}
+
+#results p {
+  color: rgba(230,230,230,0.85);
+}
+
+/* CLIENT RESULTS IMAGES */
+#results .auto-frame {
+  max-width: 220px;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#results .auto-frame img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  filter: contrast(1.05) brightness(0.95) saturate(1.1);
+}
+
+#results .auto-frame:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 18px rgba(139, 26, 39, 0.35);
+}
+
+/* Optional: layout control for smaller images */
+#results .row {
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+#results .col-md-4 {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+
+.navbar-brand img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Header title (DormFit) – dark, gritty gradient */
+.brand-text{
+  background: linear-gradient(90deg, #d8d8d8 0%, #9aa3ad 25%, #8b1a27 55%, #1a2633 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 16px rgba(220,53,69,.22);
+}
+
+/* Replace global text gradient with darker palette (no rainbow) */
+.text-gradient{
+  background: linear-gradient(90deg, #a61d2d 0%, #263447 60%, #bcbcbc 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* Logo hover – subtle crimson glow */
+.navbar-brand img{
+  transition: transform .2s ease, filter .2s ease;
+  filter: drop-shadow(0 0 0 rgba(220,53,69,0));
+}
+.navbar-brand img:hover{
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 12px rgba(220,53,69,.45));
+}
+
+/* Darker buttons to match header */
+.btn-crimson{
+  background:#8b1a27;
+  border-color:#8b1a27;
+  color:#fff;
+  font-weight:600;
+  box-shadow:0 0 10px rgba(139,26,39,.25);
+  transition:all .25s ease;
+}
+.btn-crimson:hover{
+  background:#a61d2d;
+  border-color:#a61d2d;
+  box-shadow:0 0 18px rgba(220,53,69,.35);
+  transform: translateY(-2px);
+}
+
+.btn-azure{
+  background:#0e1a2b;
+  border-color:#0e1a2b;
+  color:#fff;
+  font-weight:600;
+  box-shadow:0 0 10px rgba(13,27,45,.25);
+  transition:all .25s ease;
+}
+.btn-azure:hover{
+  background:#162b45;
+  border-color:#162b45;
+  box-shadow:0 0 18px rgba(13,27,45,.35);
+  transform: translateY(-2px);
+}
+
+.btn-iris{
+  background:#24232a;
+  border-color:#24232a;
+  color:#fff;
+  font-weight:600;
+  box-shadow:0 0 10px rgba(111,66,193,.2);
+  transition:all .25s ease;
+}
+.btn-iris:hover{
+  background:#302d38;
+  border-color:#302d38;
+  box-shadow:0 0 18px rgba(111,66,193,.3);
+  transform: translateY(-2px);
+
+}
+
+.btn-crimson {
+  background-color: #b22234;
+  border-color: #b22234;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(178, 34, 52, 0.2);
+}
+
+.btn-crimson:hover {
+  background-color: #8b1a27;
+  border-color: #8b1a27;
+  box-shadow: 0 0 25px rgba(178, 34, 52, 0.4);
+}
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-dark-subtle sticky-top">
+    <div class="container">
+     <a class="navbar-brand text-light d-flex align-items-center gap-2" href="#">
+  <img src="./logo.png" alt="DormFit Logo" height="40">
+  <span class="brand-text fw-bold">DormFit</span>
+</a>
+
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#purpose">Purpose</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <header class="py-5 gradient-hero border-bottom border-dark-subtle">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h1 class="display-5 fw-bold mb-2"><span class="text-gradient">DormFit</span></h1>
+          <p class="lead text-secondary mb-3">Built in the Dark. <span class="accent">Guided by the Light.</span> Men-only training for college guys or young men who want real results.</p>
+          <div class="d-flex flex-wrap gap-2 mb-2">
+            <span class="badge text-bg-danger badge-pill ring-gradient"><i class="bi bi-fire"></i> Strength</span>
+            <span class="badge text-bg-primary badge-pill"><i class="bi bi-lightning-charge"></i> Performance</span>
+            <span class="badge text-bg-purple badge-pill"><i class="bi bi-shield-check"></i> Discipline</span>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mt-2">
+            <a class="btn btn-crimson" href="#goals"><i class="bi bi-flag"></i> Set Your Goal</a>
+            <a class="btn btn-azure" href="#reviews"><i class="bi bi-chat-quote"></i> Leave a Review</a>
+
+            
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="panel p-3 g-border">
+            <div class="d-flex align-items-center gap-2 text-secondary text-uppercase small mb-2"><i class="bi bi-activity"></i> Today’s Focus</div>
+            <ul class="mb-0 text-secondary">
+              <li>Push Day — Incline DB Press 4×8–12</li>
+              <li>Accessory — Lateral Raise 4×12–15</li>
+              <li>Finisher — Triceps Rope Pushdown 3×10–14</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-5 border-bottom border-dark-subtle" id="verse">
+    <div class="container text-center">
+      <h2 class="text-gradient mb-3"><i class="bi bi-book"></i> Verse of the Moment</h2>
+      <blockquote class="blockquote text-secondary fs-5">
+        <p id="verseText">Loading verse...</p>
+        <footer class="blockquote-footer text-light" id="verseRef"></footer>
+      </blockquote>
+    </div>
+  </section>
+  <!-- PURPOSE -->
+<!-- PURPOSE (spotlight) -->
+<section class="py-5 border-top border-dark-subtle" id="purpose">
+  <div class="container">
+    <div class="purpose-spotlight p-4 p-md-5">
+      <div class="d-flex align-items-center gap-2 text-uppercase small text-secondary mb-2">
+        <i class="bi bi-bullseye"></i> Purpose
+      </div>
+      <h2 class="display-6 fw-bold mb-2 text-gradient">Build Men. Body. Mind. Spirit.</h2>
+      <p class="lead text-secondary mb-4">
+        DormFit exists to encourage men and help them reach real goals,stronger bodies, disciplined habits,
+        and a mindset grounded in faith. I keep it practical for college life: focused simple
+        nutrition, and accountability that fits your schedule.
+      </p>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#goals" class="btn btn-crimson"><i class="bi bi-flag"></i> Set Your Goal</a>
+        <a href="#pricing" class="btn btn-outline-light"><i class="bi bi-currency-dollar"></i> See Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="py-5 border-top border-dark-subtle" id="about">
+  <div class="container">
+    <!-- Text Section -->
+    <div class="text-center mb-5">
+      <h2 class="text-light mb-3">About <span class="accent">Isaiah Powell</span></h2>
+      <p class="text-secondary fs-6 lh-lg mx-auto about-text">
+        I’m a 19-year-old student at Kent State University majoring in 
+        <strong>Cybercriminology</strong>. I’m originally from 
+        <strong>Medina, Ohio</strong> and have been lifting for about 
+        <strong>four years consistently</strong>. Fitness taught me discipline, patience, 
+        and how to stay grounded when life gets hectic - that’s what I want to bring to DormFit.
+      </p>
+      <p class="text-secondary fs-6 lh-lg mx-auto about-text">
+        DormFit was built to help college men find a balance between school, gym, and life. 
+        Every program I design aims to fit into a busy schedule without losing intensity.
+      </p>
+      <p class="text-secondary fs-6 lh-lg mx-auto about-text">
+        I’m also taken, and I’m grateful for the support system that keeps me grounded 
+        while I chase my goals. Having someone who believes in me makes staying focused 
+        on my clients, school, and personal growth even stronger.
+      </p>
+    </div>
+
+    <!-- Smaller Images Section -->
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4 col-sm-6">
+        <div class="auto-frame about-img">
+          <img src="./Gym Pics/Edit/about me1.PNG" alt="Isaiah lifting in gym">
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="auto-frame about-img">
+          <img src="./coupleimg.jpg" alt="Isaiah and girlfriend">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+         
+
+
+
+
+<section id="goals" class="py-5 border-top border-dark-subtle">
+  <div class="container text-center">
+    <h2 class="text-light mb-3">Goal-Based Intake</h2>
+    <p class="text-secondary mb-4">Take the quick DormFit intake form to get your custom plan started.</p>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=Sm-g5cQeAU2Pc-fdFfJhNGenVQzLBKRAt14NYNoaO_lUODRYSlRLSVNUQTFVWVROVFpONUVRNjM2Ti4u" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn btn-crimson btn-lg">
+       <i class="bi bi-clipboard-check"></i> Open Form
+    </a>
+  </div>
+</section>
+
+
+  <!-- PRICING -->
+<section class="py-5 border-top border-dark-subtle" id="pricing">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="text-light">Pricing</h2>
+      <p class="text-secondary">Simple options. Real results.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Workout Plan -->
+      <div class="col-md-6">
+        <div class="panel p-4 h-100">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="text-light m-0">Workout Plan</h3>
+            <span class="badge text-bg-danger">Most popular</span>
+          </div>
+          <div class="display-6 mt-2 text-light">$50</div>
+          <p class="text-secondary mb-3">Customized training based on your goal, schedule, and equipment.</p>
+          <ul class="text-secondary mb-4">
+            <li>Goal based template for 6 to 8 weeks</li>
+            <li>Customized splits based on your goals</li>
+            <li>Volume and progression guidelines</li>
+            <li>Warm up and mobility checklist</li>
+          </ul>
+          <a href="#goals" class="btn btn-crimson w-100">
+            <i class="bi bi-flag"></i> Start with Goals
+          </a>
+        </div>
+      </div>
+
+      <!-- Workout + Nutrition -->
+      <div class="col-md-6">
+        <div class="panel p-4 h-100">
+          <h3 class="text-light m-0">Workout + Nutrition</h3>
+          <div class="display-6 mt-2 text-light">$80</div>
+          <p class="text-secondary mb-3">Training plan plus simple dorm-friendly nutrition to match your target.</p>
+          <ul class="text-secondary mb-4">
+            <li>Everything in the Workout Plan</li>
+            <li>Calories and macros for bulk, cut, or maintain</li>
+            <li>Shopping list and meal ideas on a budget</li>
+            <li>Sample day and swap guide</li>
+          </ul>
+          <a href="mailto:ipowell7@kent.edu?subject=DormFit%20Workout%20%2B%20Nutrition%20Plan" class="btn btn-azure w-100">
+            <i class="bi bi-send"></i> Email to Lock In
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Free Advice -->
+    <div class="row g-4 mt-1">
+      <div class="col-12">
+        <div class="panel p-4">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <i class="bi bi-stars text-light"></i>
+            <h4 class="text-light m-0">Free General Advice</h4>
+          </div>
+          <p class="text-secondary mb-3">
+            Not ready to buy yet? No problem. I’ll still help you out. Ask me anything about training splits,
+            form cues, dorm-friendly meals, or balancing classes, gym, and faith.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#goals" class="btn btn-outline-light"><i class="bi bi-clipboard-check"></i> Share Your Goal</a>
+            <a href="mailto:ipowell7@kent.edu?subject=Quick%20Advice%20Question" class="btn btn-outline-light"><i class="bi bi-envelope"></i> Email a Question</a>
+            <a href="https://www.tiktok.com/@zay_lifts2" target="_blank" rel="noopener" class="btn btn-outline-light">
+              <i class="bi bi-tiktok"></i> Check TikTok Tips
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small note -->
+    <p class="text-center text-secondary small mt-3">
+      Plans are delivered as a PDF and Google Sheet. Updates available if your schedule or equipment changes.
+    </p>
+  </div>
+</section>
+<section class="py-5 border-top border-dark-subtle" id="results">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="text-gradient fw-bold mb-3"><i class="bi bi-trophy"></i> Client Results</h2>
+      <p class="text-secondary mx-auto" style="max-width:700px;">
+        Real transformations from men who committed to the process. 
+        These results come from consistency, discipline, and the same approach I’ll help you build -
+        no shortcuts, just work and guidance.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Client 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="panel text-center p-3">
+          <div class="auto-frame mb-3">
+            <img src="./ryan1.jpg" alt="Client 1 transformation">
+          </div>
+          <h5 class="text-light mb-1">Ryan P.</h5>
+          <p class="text-secondary small">Went from 207 lbs. - 181 lbs TikTok - ryanphillips21_</p>
+        </div>
+      </div>
+
+      <!-- Client 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="panel text-center p-3">
+          <div class="auto-frame mb-3">
+            <img src="./reggie.jpg" alt="Client 2 transformation">
+          </div>
+          <h5 class="text-light mb-1">Reggie H.</h5>
+          <p class="text-secondary small">Gained 10 lbs of lean muscle. TikTok - modernking2305</p>
+        </div>
+      </div>
+
+      <!-- Client 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="panel text-center p-3">
+          <div class="auto-frame mb-3">
+            <img src="./mewebsite.jpg" alt="In one year I went from 190-168">
+          </div>
+          <h5 class="text-light mb-1">Isaiah P.</h5>
+          <p class="text-secondary small">In one year I went from 190 lbs. - 168 lbs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+
+
+  <section class="py-5 border-top border-dark-subtle" id="reviews">
+  <div class="container">
+    <div class="panel p-4">
+      <h2 class="text-light mb-3">Leave a Review</h2>
+      <p class="text-secondary mb-4">Your feedback helps DormFit grow and inspire others. Whether you’ve trained with me, followed my programs, or just got motivated by my TikToks, I’d love to hear what you think. Drop a quick review below so new visitors can see how this community is changing lives.</p>
+      <form id="reviewForm" class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Name</label>
+          <input class="form-control" name="name" placeholder="Your name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input class="form-control" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Rating</label>
+          <select class="form-select" name="rating" required>
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Great</option>
+            <option value="3">⭐⭐⭐ Good</option>
+            <option value="2">⭐⭐ Fair</option>
+            <option value="1">⭐ Poor</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Your Review</label>
+          <textarea class="form-control" name="review" rows="4" placeholder="Write your experience..." required></textarea>
+        </div>
+        <div class="col-12 d-flex gap-2">
+          <button class="btn btn-crimson" type="submit">Submit</button>
+          <button class="btn btn-outline-light" type="reset">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section class="py-5 border-top border-dark-subtle position-relative overflow-hidden" id="contact" style="background: url('https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-8">
+        <div class="panel p-4 bg-dark bg-opacity-75 border-0">
+          <h2 class="text-light mb-3">Contact Isaiah</h2>
+          <p class="text-secondary">Questions on plans, pricing, or coaching? Reach out anytime.</p>
+
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge text-bg-danger"><i class="bi bi-telephone"></i></span>
+              <div>
+                <div class="text-secondary small">Phone</div>
+                <a class="link-light" href="tel:+12348029198">(234) 802-9198</a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge text-bg-primary"><i class="bi bi-envelope"></i></span>
+              <div>
+                <div class="text-secondary small">Email</div>
+                <a class="link-light" href="mailto:ipowell7@kent.edu">ipowell7@kent.edu</a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge text-bg-dark"><i class="bi bi-tiktok"></i></span>
+              <div>
+                <div class="text-secondary small">TikTok</div>
+                <a class="link-light" href="https://www.tiktok.com/@zay_lifts2" target="_blank" rel="noopener">@zay_lifts2</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 d-flex flex-wrap gap-2">
+            <a href="tel:+12348029198" class="btn btn-crimson">
+              <i class="bi bi-telephone-outbound"></i> Call
+            </a>
+            <a href="sms:+12348029198" class="btn btn-outline-light">
+              <i class="bi bi-chat-text"></i> Text
+            </a>
+            <a href="mailto:ipowell7@kent.edu" class="btn btn-azure">
+              <i class="bi bi-send"></i> Email
+            </a>
+            <a href="https://www.tiktok.com/@zay_lifts2" target="_blank" rel="noopener" class="btn btn-outline-light">
+              <i class="bi bi-tiktok"></i> TikTok
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,0.6);"></div>
+</section>
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+  // ===== Verse Rotator =====
+  const vText = document.getElementById('verseText');
+  const vRef  = document.getElementById('verseRef');
+  if (vText && vRef) {
+    const verses = [
+      { ref: 'Philippians 4:13', text: 'I can do all things through Christ who strengthens me.' },
+      { ref: 'Proverbs 27:17',   text: 'As iron sharpens iron, so one man sharpens another.' },
+      { ref: 'Isaiah 40:31',     text: 'They who wait on the Lord shall renew their strength.' },
+      { ref: 'Joshua 1:9',       text: 'Be strong and courageous... for the Lord your God is with you.' }
+    ];
+    let i = 0;
+    function render(){ vText.textContent = '“' + verses[i].text + '”'; vRef.textContent = '— ' + verses[i].ref; }
+    render();
+    setInterval(()=>{ i = (i+1) % verses.length; render(); }, 6000);
+  }
+
+  // ===== Goal Form =====
+  const OWNER_EMAIL = 'ipowell7@kent.edu';
+  const goalForm = document.getElementById('goalForm');
+  if (goalForm) {
+    const buildText = (form) => {
+      const d = Object.fromEntries(new FormData(form).entries());
+      return Object.entries(d).map(([k,v]) => k + ': ' + v).join('\n');
+    };
+    goalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = buildText(goalForm);
+      const d = Object.fromEntries(new FormData(goalForm).entries());
+      const cc = document.getElementById('ccMe').checked ? '&cc=' + encodeURIComponent(d.email || '') : '';
+      window.location.href = 'mailto:' + encodeURIComponent(OWNER_EMAIL) +
+        '?subject=DormFit Goal Intake' + cc + '&body=' + encodeURIComponent(text);
+    });
+  }
+
+  // ===== Contact Form =====
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const buildMsg = (form) => {
+      const d = Object.fromEntries(new FormData(form).entries());
+      return Object.entries(d).map(([k,v]) => k + ': ' + v).join('\n');
+    };
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = buildMsg(contactForm);
+      window.location.href = 'mailto:' + encodeURIComponent(OWNER_EMAIL) +
+        '?subject=DormFit Contact&body=' + encodeURIComponent(text);
+    });
+  }
+})();
+</script>
+
+<!-- ===== SUPABASE REVIEWS SCRIPT ===== -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const SUPABASE_URL = "https://opxxowtpfjmbgfonjlrb.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_fufIGtzQ0N2Hbej2wrM6Bg_HLzpvagb";
+  const TABLE = "reviews";
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const reviewsList = document.getElementById("reviewsList");
+  const reviewForm = document.getElementById("reviewForm");
+  const reviewMsg = document.getElementById("reviewMsg");
+  const msg = (t) => { if (reviewMsg) reviewMsg.textContent = t; };
+
+  const escapeHTML = (s="") => s.replace(/[&<>"']/g,m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+  const stars = (n=5)=>"★".repeat(n)+"☆".repeat(5-n);
+  const card = (r)=>`
+    <div class="col-md-4">
+      <div class="panel p-3 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-1">
+          <strong class="text-light">${escapeHTML(r.name||"")}</strong>
+          <span class="text-warning">${stars(Number(r.rating)||5)}</span>
+        </div>
+        <p class="text-secondary mb-2" style="white-space:pre-wrap;">${escapeHTML(r.review||"")}</p>
+        <div class="text-secondary small"><i class="bi bi-clock"></i> ${new Date(r.created_at).toLocaleDateString()}</div>
+      </div>
+    </div>`;
+
+  async function loadReviews(){
+    if(!reviewsList) return;
+    const { data, error } = await supabase
+      .from(TABLE)
+      .select("*")
+      .order("created_at", { ascending:false })
+      .limit(30);
+    if (error) {
+      console.error("SELECT error:", error);
+      return;
+    }
+    if (data && data.length) reviewsList.innerHTML = data.map(card).join("");
+  }
+
+  if (reviewForm){
+    reviewForm.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      msg("Submitting…");
+
+      const formData = Object.fromEntries(new FormData(reviewForm).entries());
+      const row = {
+        name: formData.name?.trim() || "Anonymous",
+        rating: Math.max(1, Math.min(5, parseInt(formData.rating||"5",10) || 5)),
+        review: (formData.review||"").trim()
+      };
+
+      const { error } = await supabase.from(TABLE).insert([row]);
+
+      if (error){
+        console.error("INSERT error:", error);
+        msg("❌ Submit failed: " + (error.message||"unknown error"));
+        return;
+      }
+
+      // ✅ success — clear everything
+      msg("✅ Thanks! Your review has been saved.");
+      reviewForm.reset();
+      reviewsList.innerHTML = ""; // clears current reviews visually
+      setTimeout(() => {
+        msg(""); // clears success message
+        loadReviews(); // reloads all fresh reviews
+      }, 1500);
+    });
+  }
+
+  loadReviews();
+});
+</script>
+
+</body>
+</html>
