@@ -367,6 +367,54 @@ body {
 }
 
 
+#tools .panel {
+  background: var(--df-panel);
+  border: 1px solid var(--df-border);
+  border-radius: 1rem;
+  box-shadow: 0 0 25px rgba(220,53,69,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#tools .panel:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 40px rgba(220,53,69,0.15);
+}
+#tools h2 {
+  text-shadow: 0 0 12px rgba(220,53,69,0.25);
+}
+
+/* ===== Pricing Section Hover Glow ===== */
+.pricing-card {
+  position: relative;
+  transition: all 0.35s ease;
+  box-shadow: 0 0 0 rgba(220,53,69,0);
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(220,53,69,0.4), 0 0 60px rgba(111,66,193,0.15);
+  border-color: rgba(220,53,69,0.4);
+}
+
+/* Under-glow line under the box */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(220,53,69,0.9), rgba(111,66,193,0.6), rgba(220,53,69,0.9));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0 0 10px 10px;
+}
+
+.pricing-card:hover::before {
+  opacity: 1;
+}
+
+
+
 
 
 
@@ -517,84 +565,82 @@ body {
 </section>
 
 
-  <!-- PRICING -->
+  <!-- ===== Pricing Section ===== -->
 <section class="py-5 border-top border-dark-subtle" id="pricing">
   <div class="container">
-    <div class="text-center mb-4">
-      <h2 class="text-light">Pricing</h2>
-      <p class="text-secondary">Simple options. Real results.</p>
+    <div class="text-center mb-5">
+      <h2 class="text-light mb-3">Pricing - <span class="accent">7-Day Free Trial</span></h2>
+      <p class="text-secondary fs-6 lh-lg mx-auto" style="max-width:700px;">
+        Start your DormFit journey with a <strong>7-day free trial</strong>.  
+        Once you’re seeing results, choose your path training only, or full coaching with nutrition.
+      </p>
     </div>
 
-    <div class="row g-4">
-      <!-- Workout Plan -->
-      <div class="col-md-6">
-        <div class="panel p-4 h-100">
-          <div class="d-flex align-items-center justify-content-between">
-            <h3 class="text-light m-0">Workout Plan</h3>
-            <span class="badge text-bg-danger">Most popular</span>
-          </div>
-          <div class="display-6 mt-2 text-light">$50</div>
-          <p class="text-secondary mb-3">Customized training based on your goal, schedule, and equipment.</p>
-          <ul class="text-secondary mb-4">
-            <li>Goal based template for 6 to 8 weeks</li>
-            <li>Customized splits based on your goals</li>
-            <li>Volume and progression guidelines</li>
-            <li>Warm up and mobility checklist</li>
-          </ul>
-          <a href="#goals" class="btn btn-crimson w-100">
-            <i class="bi bi-flag"></i> Start with Goals
-          </a>
-        </div>
-      </div>
-
-      <!-- Workout + Nutrition -->
-      <div class="col-md-6">
-        <div class="panel p-4 h-100">
-          <h3 class="text-light m-0">Workout + Nutrition</h3>
-          <div class="display-6 mt-2 text-light">$80</div>
-          <p class="text-secondary mb-3">Training plan plus simple dorm-friendly nutrition to match your target.</p>
-          <ul class="text-secondary mb-4">
-            <li>Everything in the Workout Plan</li>
-            <li>Calories and macros for bulk, cut, or maintain</li>
-            <li>Shopping list and meal ideas on a budget</li>
-            <li>Sample day and swap guide</li>
-          </ul>
-          <a href="mailto:ipowell7@kent.edu?subject=DormFit%20Workout%20%2B%20Nutrition%20Plan" class="btn btn-azure w-100">
-            <i class="bi bi-send"></i> Email to Lock In
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Free Advice -->
-    <div class="row g-4 mt-1">
-      <div class="col-12">
-        <div class="panel p-4">
-          <div class="d-flex align-items-center gap-2 mb-1">
-            <i class="bi bi-stars text-light"></i>
-            <h4 class="text-light m-0">Free General Advice</h4>
-          </div>
+    <div class="row justify-content-center g-4">
+      <!-- ===== Basic Plan ===== -->
+      <div class="col-md-6 col-lg-5">
+        <div class="pricing-card panel p-4 h-100 text-center">
+          <h3 class="text-light mb-2">Workout Plan</h3>
           <p class="text-secondary mb-3">
-            Not ready to buy yet? No problem. I’ll still help you out. Ask me anything about training splits,
-            form cues, dorm-friendly meals, or balancing classes, gym, and faith.
+            Custom workout plan designed for your goals, schedule, and gym access.
           </p>
-          <div class="d-flex flex-wrap gap-2">
-            <a href="#goals" class="btn btn-outline-light"><i class="bi bi-clipboard-check"></i> Share Your Goal</a>
-            <a href="mailto:ipowell7@kent.edu?subject=Quick%20Advice%20Question" class="btn btn-outline-light"><i class="bi bi-envelope"></i> Email a Question</a>
-            <a href="https://www.tiktok.com/@zay_lifts2" target="_blank" rel="noopener" class="btn btn-outline-light">
-              <i class="bi bi-tiktok"></i> Check TikTok Tips
-            </a>
+
+          <div class="mb-3">
+            <span class="display-5 fw-bold text-light">$25</span>
+            <span class="text-secondary">/week</span>
           </div>
+
+          <div class="badge bg-dark text-light mb-4 px-3 py-2 border border-danger">
+            🔥 Includes 7-Day Free Trial
+          </div>
+
+          <ul class="list-unstyled text-secondary text-start mx-auto" style="max-width:280px;">
+            <li><i class="bi bi-check-circle text-crimson"></i> Personalized workout split</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Progressive overload tracking</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Weekly accountability check-ins</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Cancel anytime</li>
+          </ul>
+
+          <a href="#goals" class="btn btn-crimson mt-4">
+            <i class="bi bi-flag"></i> Start 7-Day Free Trial
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== Premium Plan ===== -->
+      <div class="col-md-6 col-lg-5">
+        <div class="pricing-card panel p-4 h-100 text-center">
+          <h3 class="text-light mb-2">Workout + Nutrition Plan</h3>
+          <p class="text-secondary mb-3">
+            Full coaching with personalized workouts and nutrition plans to optimize progress.
+          </p>
+
+          <div class="mb-3">
+            <span class="display-5 fw-bold text-light">$50</span>
+            <span class="text-secondary">/week</span>
+          </div>
+
+          <div class="badge bg-dark text-light mb-4 px-3 py-2 border border-danger">
+            🔥 Includes 7-Day Free Trial
+          </div>
+
+          <ul class="list-unstyled text-secondary text-start mx-auto" style="max-width:280px;">
+            <li><i class="bi bi-check-circle text-crimson"></i> Custom workout + meal plan</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Calorie & macro tracking guidance</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Weekly performance + nutrition review</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Priority messaging support</li>
+            <li><i class="bi bi-check-circle text-crimson"></i> Cancel anytime</li>
+          </ul>
+
+          <a href="#goals" class="btn btn-iris mt-4">
+            <i class="bi bi-lightning-charge"></i> Start 7-Day Free Trial
+          </a>
         </div>
       </div>
     </div>
-
-    <!-- Small note -->
-    <p class="text-center text-secondary small mt-3">
-      Plans are delivered as a PDF and Google Sheet. Updates available if your schedule or equipment changes.
-    </p>
   </div>
 </section>
+
 <section class="py-5 border-top border-dark-subtle" id="results">
   <div class="container">
     <div class="text-center mb-5">
@@ -683,6 +729,34 @@ body {
     </div>
   </div>
 </section>
+
+<section class="py-5 border-top border-dark-subtle" id="tools">
+  <div class="container">
+    <div class="panel p-4 p-md-5 text-center">
+      <div class="d-flex align-items-center justify-content-center gap-2 text-uppercase small text-secondary mb-2">
+        <i class="bi bi-gear-wide-connected"></i> Helpful Tools
+      </div>
+      <h2 class="fw-bold text-light mb-3">Track Smarter, Not Harder</h2>
+      <p class="text-secondary mb-4">
+        Here are a few tools I personally recommend to make your fitness journey easier. 
+        From calculating your daily calorie needs to tracking your macros, these help you stay consistent.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="https://tdeecalculator.net/result.php?s=imperial&g=male&age=19&lbs=168&in=72&act=1.55&f=1" 
+           target="_blank" class="btn btn-crimson">
+          <i class="bi bi-calculator"></i> TDEE Calculator
+        </a>
+        <a href="https://www.myfitnesspal.com/" target="_blank" class="btn btn-outline-light">
+          <i class="bi bi-phone"></i> MyFitnessPal
+        </a>
+        <a href="https://www.strong.app/" target="_blank" class="btn btn-outline-light">
+          <i class="bi bi-bar-chart"></i> Strong App
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="py-5 border-top border-dark-subtle position-relative overflow-hidden" id="contact" style="background: url('https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;">
   <div class="container position-relative" style="z-index:2;">
